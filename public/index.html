@@ -1,15 +1,46 @@
-<!DOCTYPE html><html><head>
-    <script src="p5.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.sound.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   </head>
   <body>
     <script src="sketch.js"></script>
     <script src="Earthquake.js"></script>
-    <h1>4.5+ magnitude earthquakes in the last 30 days</h1>
-  
-
-</body></html>
+    
+    
+    <div class="container">    
+      <h1>4.5+ magnitude earthquakes in the last 30 days</h1>
+      <div class="row" id="canvasContainer">
+      </div>
+      <div class="row">
+		<div class="col-md">
+			<table id="eq_dat_tab_id" class="display" style="width:100%">
+				<thead>
+					<tr>
+						<th>Index</th>
+						<th>Longitude</th>
+						<th>Latitude</th>
+						<th>Magnitude</th>
+						<th>Place</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="col-md">
+		  <canvas id="earthquakeReportChart" width="1" height="1"></canvas>
+		</div>
+	</div>
+    
+  </div>
+  </body>
+</html>
