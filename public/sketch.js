@@ -17,6 +17,8 @@ let earthquakeReportChart;
 let earthquakeReportChartData;
 
 let socket;
+let bgMusic;
+let playBgMusicBtn;
 
 function preload() {
   // preload() runs once
@@ -534,6 +536,8 @@ function setup() {
     // <p class="microsoft marquee">Windows 8 and Windows RT </p>
     console.log(data);
   });
+
+  bgMusic = loadSound("David_Hilowitz_-_Gradual_Sunrise.mp3", bgMusicLoaded);
 }
 
 function refresh(){
@@ -542,6 +546,23 @@ function refresh(){
     x.enable = false; 
     return x
   });
+}
+
+function bgMusicLoaded(){
+  playBgMusicBtn = createButton('Play');
+  playBgMusicBtn.mousePressed(play_pause_BgMusic);
+  //bgMusic.play();
+}
+
+function play_pause_BgMusic(){
+  if(!bgMusic.isPlaying()){
+    bgMusic.play();
+    playBgMusicBtn.html('Pause');
+  } else {
+    bgMusic.pause();
+    playBgMusicBtn.html('Play');
+  }
+  
 }
 
 function draw() {
