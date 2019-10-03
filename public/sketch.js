@@ -16,6 +16,8 @@ let dat_tab;
 let earthquakeReportChart;
 let earthquakeReportChartData;
 
+let socket;
+
 function preload() {
   // preload() runs once
   img = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/0,0,1,0,0/1024x512?access_token=pk.eyJ1IjoiZmFycnVraCIsImEiOiJ1YjZJZ1NBIn0.gpvfQueo5w5JuaO9f93SuQ');
@@ -508,15 +510,30 @@ function setup() {
     let eq_x = mercX(eq_lon,1) - cx;
     let eq_y = mercY(eq_lat,1) - cy;
     
-    earthquakes.push(new Earthquake(eq_lon,eq_lat,orig_mag, place, eq_x,eq_y,d));    
+    earthquakes.push(new Earthquake(eq_lon,eq_lat,orig_mag, place, eq_x,eq_y,d));
+    
+    
   }
   
   refreshBtn.mousePressed(refresh);
   
   earthquakeReportChartData = [0, 0, 0, 0, 0, 0] ;
   createEarthquakeReportBarChart(earthquakeReportChartData);
-  
-  
+
+  socket = io.connect('http://localhost:3000');
+  let tickerP = createP('News Flash').addClass('marquee');
+  tickerP.parent("ticker");
+  tickerP.style('background-color', color(150, 0, 0, 50));
+  socket.on('news', (data) => {
+    if(tickerP != null){
+      tickerP.remove();
+    }
+    tickerP = createP(data.newsItem).addClass('marquee');
+    tickerP.parent("ticker");
+    tickerP.style('background-color', color(150, 0, 0, 50));
+    // <p class="microsoft marquee">Windows 8 and Windows RT </p>
+    console.log(data);
+  });
 }
 
 function refresh(){

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,22 +24,27 @@
       <div class="row" id="canvasContainer">
       </div>
       <div class="row">
-		<div class="col-md">
-			<table id="eq_dat_tab_id" class="display" style="width:100%">
-				<thead>
-					<tr>
-						<th>Index</th>
-						<th>Longitude</th>
-						<th>Latitude</th>
-						<th>Magnitude</th>
-						<th>Place</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-		<div class="col-md">
-		  <canvas id="earthquakeReportChart" width="1" height="1"></canvas>
-		</div>
+          <div class="col-md"  id="ticker">
+
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <table id="eq_dat_tab_id" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Magnitude</th>
+                <th>Place</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      <div class="col-md">
+        <canvas id="earthquakeReportChart" width="1" height="1"></canvas>
+      </div>
 	</div>
     
   </div>
